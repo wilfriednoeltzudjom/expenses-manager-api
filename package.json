@@ -1,0 +1,21 @@
+{
+  "name": "expenses-manager-api",
+  "version": "1.0.0",
+  "description": "AI-powered expenses manager backend",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "wilfriednoeltzudjom",
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "^9.20.1",
+    "eslint-config-prettier": "^10.0.1",
+    "eslint-plugin-prettier": "^5.2.3",
+    "eslint-plugin-simple-import-sort": "^12.1.1",
+    "husky": "^9.1.7",
+    "lint-staged": "^15.4.3",
+    "prettier": "^3.5.1",
+    "typescript": "^5.7.3"
+  }
+}
