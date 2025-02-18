@@ -15,28 +15,25 @@ export class Expense {
   ) {}
 
   toJSON() {
-    const user = this.user ? this.user.toJSON() : {};
-    const category = this.category ? this.category.toJSON() : {};
-
     return {
       id: this.id,
       title: this.title,
-      user,
-      category,
       amount: this.amount,
       description: this.description,
       date: this.date,
       createdAt: this.createdAt,
       updatedAt: this.updatedAt,
+      user: this.user?.toJSON(),
+      category: this.category?.toJSON(),
     };
   }
 
-  static instance(expense: Partial<Expense>) {
+  static instance(expense: Partial<Omit<Expense, 'user' | 'category'>> & { user?: Partial<User>; category?: Partial<Category> }) {
     return new Expense(
       expense.id ?? '',
       expense.title ?? '',
-      expense.user ?? User.instance({}),
-      expense.category ?? Category.instance({}),
+      expense.user ? User.instance(expense.user) : User.instance({}),
+      expense.category ? Category.instance(expense.category) : Category.instance({}),
       expense.amount ?? 0,
       expense.description ?? '',
       expense.date ?? new Date(),
