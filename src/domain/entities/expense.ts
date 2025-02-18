@@ -5,8 +5,8 @@ export class Expense {
   constructor(
     public readonly id: string,
     public readonly title: string,
-    public readonly user: User,
-    public readonly category: Category,
+    public user: User,
+    public category: Category,
     public readonly amount: number,
     public readonly description: string,
     public readonly date: Date,
@@ -29,5 +29,19 @@ export class Expense {
       createdAt: this.createdAt,
       updatedAt: this.updatedAt,
     };
+  }
+
+  static instance(expense: Partial<Expense>) {
+    return new Expense(
+      expense.id ?? '',
+      expense.title ?? '',
+      expense.user ?? User.instance({}),
+      expense.category ?? Category.instance({}),
+      expense.amount ?? 0,
+      expense.description ?? '',
+      expense.date ?? new Date(),
+      expense.createdAt ?? new Date(),
+      expense.updatedAt ?? new Date(),
+    );
   }
 }

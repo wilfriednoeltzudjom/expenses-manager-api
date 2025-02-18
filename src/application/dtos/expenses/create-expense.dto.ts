@@ -1,6 +1,8 @@
 import { IsDateString, IsNotEmpty, IsNumber, IsString } from 'class-validator';
 
-export class CreateExpenseDto {
+import { BaseDto } from '../base.dto';
+
+export class CreateExpenseDto extends BaseDto {
   @IsNotEmpty()
   @IsString()
   title: string;

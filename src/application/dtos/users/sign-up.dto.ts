@@ -1,6 +1,8 @@
 import { IsEmail, IsNotEmpty, IsString } from 'class-validator';
 
-export class SignUpDto {
+import { BaseDto } from '../base.dto';
+
+export class SignUpDto extends BaseDto {
   @IsNotEmpty()
   @IsString()
   lastName: string;

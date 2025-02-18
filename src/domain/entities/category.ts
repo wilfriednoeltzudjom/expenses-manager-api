@@ -14,4 +14,8 @@ export class Category {
       updatedAt: this.updatedAt,
     };
   }
+
+  static instance(category: Partial<Category>) {
+    return new Category(category.id ?? '', category.name ?? '', category.createdAt ?? new Date(), category.updatedAt ?? new Date());
+  }
 }

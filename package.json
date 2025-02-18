@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "AI-powered expenses manager backend",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "build": "tsc",
     "start": "node dist/main.js",
@@ -18,6 +19,7 @@
   "author": "wilfriednoeltzudjom",
   "license": "MIT",
   "devDependencies": {
+    "@faker-js/faker": "^9.5.0",
     "@types/bcrypt": "^5.0.2",
     "@types/jsonwebtoken": "^9.0.8",
     "@typescript-eslint/eslint-plugin": "^6.21.0",
@@ -39,6 +41,7 @@
     "class-transformer": "^0.5.1",
     "class-validator": "^0.14.1",
     "jsonwebtoken": "^9.0.2",
+    "openai": "^4.85.1",
     "reflect-metadata": "^0.2.2",
     "tsyringe": "^4.8.0"
   },

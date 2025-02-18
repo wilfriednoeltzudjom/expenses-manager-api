@@ -29,3 +29,9 @@ export class UnauthorizedError extends BasicError {
     super(message, 'UnauthorizedError', 401);
   }
 }
+
+export class InvalidCredentialsError extends BasicError {
+  constructor(message: string) {
+    super(message, 'InvalidCredentialsError', 401);
+  }
+}

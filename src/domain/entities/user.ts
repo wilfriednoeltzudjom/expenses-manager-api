@@ -20,7 +20,7 @@ export class User {
     };
   }
 
-  static create(user: Partial<User>) {
+  static instance(user: Partial<User>) {
     return new User(user.id ?? '', user.lastName ?? '', user.firstName ?? '', user.email ?? '', user.password ?? '', user.createdAt, user.updatedAt);
   }
 }
