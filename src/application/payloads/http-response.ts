@@ -1,6 +1,6 @@
 export class HttpResponse<T> {
-  readonly success: boolean;
-  readonly statusCode: number;
+  success: boolean;
+  statusCode: number;
   message: string;
   data: T;
 

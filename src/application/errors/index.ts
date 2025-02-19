@@ -1,7 +1,7 @@
-export class BasicError extends Error {
-  private statusCode: number;
+export class ApplicationError extends Error {
+  statusCode: number;
 
-  constructor(message: string, name = 'BasicError', statusCode = 500) {
+  constructor(message: string, name = 'ApplicationError', statusCode = 500) {
     super(message);
     this.name = name;
     this.statusCode = statusCode;
@@ -12,25 +12,25 @@ export class BasicError extends Error {
   }
 }
 
-export class BadRequestError extends BasicError {
+export class BadRequestError extends ApplicationError {
   constructor(message: string) {
     super(message, 'BadRequestError', 400);
   }
 }
 
-export class ResourceNotFoundError extends BasicError {
+export class ResourceNotFoundError extends ApplicationError {
   constructor(message: string) {
     super(message, 'ResourceNotFoundError', 404);
   }
 }
 
-export class UnauthorizedError extends BasicError {
+export class UnauthorizedError extends ApplicationError {
   constructor(message: string) {
     super(message, 'UnauthorizedError', 401);
   }
 }
 
-export class InvalidCredentialsError extends BasicError {
+export class InvalidCredentialsError extends ApplicationError {
   constructor(message: string) {
     super(message, 'InvalidCredentialsError', 401);
   }

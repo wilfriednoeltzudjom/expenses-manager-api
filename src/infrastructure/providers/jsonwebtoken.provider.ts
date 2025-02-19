@@ -7,12 +7,11 @@ export class JsonWebTokenProvider implements WebTokenProvider {
     return jwt.sign(payload, secret, options);
   }
 
-  async verify(token: string, secret: string): Promise<boolean> {
+  async verify(token: string, secret: string): Promise<{ id?: string }> {
     try {
-      jwt.verify(token, secret);
-      return true;
+      return jwt.verify(token, secret) as { id?: string };
     } catch (error) {
-      return false;
+      return {};
     }
   }
 }

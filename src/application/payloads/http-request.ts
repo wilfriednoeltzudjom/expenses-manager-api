@@ -1,27 +1,17 @@
 export class HttpRequest {
-  readonly body: Record<string, unknown>;
-  readonly params: Record<string, unknown>;
-  readonly query: Record<string, unknown>;
-  readonly user: Record<'id', string>;
+  readonly body: unknown;
+  readonly params: unknown;
+  readonly query: unknown;
+  readonly user: { id: string };
 
-  constructor(body: Record<string, unknown>, params: Record<string, unknown>, query: Record<string, unknown>, user: Record<'id', string>) {
+  constructor(body: unknown, params: unknown, query: unknown, user: unknown) {
     this.body = body;
     this.params = params;
     this.query = query;
-    this.user = user;
+    this.user = user as { id: string };
   }
 
-  static create({
-    body,
-    params,
-    query,
-    user,
-  }: {
-    body: Record<string, unknown>;
-    params: Record<string, unknown>;
-    query: Record<string, unknown>;
-    user: Record<'id', string>;
-  }) {
+  static instance({ body, params, query, user }: { body?: unknown; params?: unknown; query?: unknown; user?: { id: string } }) {
     return new HttpRequest(body, params, query, user);
   }
 }
