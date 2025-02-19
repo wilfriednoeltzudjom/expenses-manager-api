@@ -3,11 +3,10 @@
   "version": "1.0.0",
   "description": "AI-powered expenses manager backend",
   "main": "index.js",
-  "type": "module",
   "scripts": {
     "build": "tsc",
     "start": "node dist/main.js",
-    "start:dev": "ts-node-dev -r tsconfig-paths/register src/main.ts",
+    "start:dev": "ts-node -r tsconfig-paths/register src/main.ts",
     "start:prod": "node dist/main.js",
     "test": "vitest run",
     "test:watch": "vitest",
@@ -17,9 +16,10 @@
     "prepare": "husky install",
     "prisma:generate": "prisma generate",
     "prisma:migrate": "prisma migrate deploy",
-    "prisma:migrate:dev": "prisma migrate dev",
     "docker:build": "docker build -t expenses-manager-api .",
-    "docker:compose": "docker-compose up -d"
+    "docker:up": "docker-compose up --build -d",
+    "docker:down": "docker-compose down -v",
+    "docker:restart": "npm run docker:down && npm run docker:up"
   },
   "author": "wilfriednoeltzudjom",
   "license": "MIT",
@@ -43,6 +43,8 @@
     "lint-staged": "^15.4.3",
     "prettier": "^3.5.1",
     "prisma": "^6.3.1",
+    "ts-node": "^10.9.2",
+    "tsconfig-paths": "^4.2.0",
     "typescript": "^5.7.3",
     "vite-tsconfig-paths": "^5.1.4",
     "vitest": "^3.0.5"
@@ -61,6 +63,7 @@
     "morgan": "^1.10.0",
     "openai": "^4.85.1",
     "reflect-metadata": "^0.2.2",
+    "stacktracey": "^2.1.8",
     "swagger-jsdoc": "^6.2.8",
     "swagger-ui-express": "^5.0.1",
     "tsyringe": "^4.8.0",

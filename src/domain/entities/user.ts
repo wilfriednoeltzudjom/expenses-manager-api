@@ -1,12 +1,12 @@
 export class User {
   constructor(
-    public readonly id: string,
-    public readonly lastName: string,
-    public readonly firstName: string,
-    public readonly email: string,
-    public readonly password: string,
-    public readonly createdAt?: Date,
-    public readonly updatedAt?: Date,
+    public id: string,
+    public lastName: string,
+    public firstName: string,
+    public email: string,
+    public password: string,
+    public createdAt?: Date,
+    public updatedAt?: Date,
   ) {}
 
   toJSON() {

@@ -3,15 +3,15 @@ import { User } from './user';
 
 export class Expense {
   constructor(
-    public readonly id: string,
-    public readonly title: string,
+    public id: string,
+    public title: string,
     public user: User,
     public category: Category,
-    public readonly amount: number,
-    public readonly description: string,
-    public readonly date: Date,
-    public readonly createdAt: Date,
-    public readonly updatedAt: Date,
+    public amount: number,
+    public description: string,
+    public date: Date,
+    public createdAt: Date,
+    public updatedAt: Date,
   ) {}
 
   toJSON() {

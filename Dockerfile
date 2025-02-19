@@ -1,22 +1,25 @@
 
 # Development stage
-FROM node:18-alpine as development
+FROM node:20-alpine AS development
 
 WORKDIR /app
 
-COPY package*.json ./
-COPY prisma ./prisma/
+RUN apk add --no-cache postgresql-client
 
-RUN npm install
+COPY package*.json ./
+COPY tsconfig.json ./
+COPY prisma ./prisma/
+COPY scripts/start.sh ./scripts/start.sh
+
+RUN chmod +x ./scripts/start.sh
+RUN npm install --include=dev
 
 COPY . .
 
 EXPOSE ${PORT}
 
-CMD ["npm", "run", "start:dev"]
-
 # Build stage
-FROM node:18-alpine as builder
+FROM node:20-alpine AS builder
 
 WORKDIR /app
 
@@ -30,7 +33,7 @@ COPY . .
 RUN npm run build
 
 # Production stage
-FROM node:18-alpine as production
+FROM node:20-alpine AS production
 
 WORKDIR /app
 
@@ -38,7 +41,6 @@ COPY --from=builder /app/dist ./dist
 COPY --from=builder /app/node_modules ./node_modules
 COPY --from=builder /app/package*.json ./
 COPY --from=builder /app/prisma ./prisma
+COPY --from=builder /app/scripts ./scripts
 
 EXPOSE ${PORT}
-
-CMD ["npm", "run", "start:prod"] 

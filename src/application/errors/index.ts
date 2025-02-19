@@ -35,3 +35,12 @@ export class InvalidCredentialsError extends ApplicationError {
     super(message, 'InvalidCredentialsError', 401);
   }
 }
+
+export class ValidationError extends ApplicationError {
+  details: unknown;
+
+  constructor(message: string, validationErrors: any[]) {
+    super(message, 'ValidationError', 400);
+    this.details = validationErrors;
+  }
+}

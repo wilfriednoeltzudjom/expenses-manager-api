@@ -11,7 +11,7 @@ export class PrismaCategoryRepository implements CategoryRepository {
 
   async create(category: Category): Promise<Category> {
     const prismaCategory = await this.prisma.category.create({
-      data: category,
+      data: { name: category.name },
     });
 
     return Category.instance(prismaCategory);

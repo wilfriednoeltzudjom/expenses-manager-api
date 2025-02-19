@@ -1,6 +1,7 @@
 import OpenAI from 'openai';
 
 import { AIPlatformProvider } from '@/application/providers/ai.provider';
+import { config } from '@/config/environment';
 import { Expense } from '@/domain/entities/expense';
 
 export class OpenAIProvider implements AIPlatformProvider {
@@ -8,7 +9,7 @@ export class OpenAIProvider implements AIPlatformProvider {
 
   constructor() {
     this.openai = new OpenAI({
-      apiKey: process.env.OPENAI_API_KEY,
+      apiKey: config.OPENAI_API_KEY,
     });
   }
 
@@ -17,7 +18,8 @@ export class OpenAIProvider implements AIPlatformProvider {
     Response should be a single word or short phrase like: Groceries, Dining, Transportation, etc.`;
 
     const response = await this.openai.chat.completions.create({
-      model: 'gpt-4o',
+      model: 'gpt-4o-mini',
+      store: true,
       messages: [{ role: 'user', content: prompt }],
     });
 

@@ -6,7 +6,7 @@ import { WebTokenProvider } from '@/application/providers/webtoken.provider';
 import { container } from '@/config/container';
 import { UserRepository } from '@/domain/repositories/user.repository';
 
-export async function authMiddleware(req: Request, res: Response, next: NextFunction) {
+export async function authMiddleware(req: Request & { user?: { id: string } }, res: Response, next: NextFunction) {
   const token = req.headers.authorization?.split(' ')[1];
   if (!token) {
     throw new UnauthorizedError(NO_TOKEN_PROVIDED);

@@ -11,7 +11,12 @@ export class PrismaUserRepository implements UserRepository {
 
   async create(user: User): Promise<User> {
     const prismaUser = await this.prisma.user.create({
-      data: user,
+      data: {
+        lastName: user.lastName,
+        firstName: user.firstName,
+        email: user.email,
+        password: user.password,
+      },
     });
 
     return User.instance(prismaUser);
