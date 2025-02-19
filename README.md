@@ -137,7 +137,7 @@ npm run start:prod
 Using Docker:
 
 ```bash
-npm run docker:compose
+npm run docker:up
 ```
 
 ### Running Tests
