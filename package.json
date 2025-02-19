@@ -18,7 +18,7 @@
     "prisma:migrate": "prisma migrate deploy",
     "docker:build": "docker build -t expenses-manager-api .",
     "docker:up": "docker-compose up --build -d",
-    "docker:down": "docker-compose down -v",
+    "docker:down": "docker-compose down",
     "docker:restart": "npm run docker:down && npm run docker:up"
   },
   "author": "wilfriednoeltzudjom",
