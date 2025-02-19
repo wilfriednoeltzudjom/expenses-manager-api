@@ -7,7 +7,7 @@
   "scripts": {
     "build": "tsc",
     "start": "node dist/main.js",
-    "dev": "ts-node-dev -r tsconfig-paths/register src/main.ts",
+    "start:dev": "ts-node-dev -r tsconfig-paths/register src/main.ts",
     "start:prod": "node dist/main.js",
     "test": "vitest run",
     "test:watch": "vitest",
@@ -18,7 +18,8 @@
     "prisma:generate": "prisma generate",
     "prisma:migrate": "prisma migrate deploy",
     "prisma:migrate:dev": "prisma migrate dev",
-    "prisma:studio": "prisma studio"
+    "docker:build": "docker build -t expenses-manager-api .",
+    "docker:compose": "docker-compose up -d"
   },
   "author": "wilfriednoeltzudjom",
   "license": "MIT",
